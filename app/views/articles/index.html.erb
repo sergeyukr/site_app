@@ -13,7 +13,7 @@
 <tr>
 	<td width="60%" align="center"><%= article.name %></td>
 	<td width="15%" align="center"><%= article.dat %></td>
-	<td width="25%" align="center"><%= link_to 'Редактировать', edit_article_path(article) %>/<%= link_to 'Удалить', article, confirm: 'Может ненадо?', method: :delete %></td>
+	<td width="25%" align="center"><%= link_to 'Редактировать', edit_article_path(article) %>/<%= link_to 'Удалить', article, confirm: 'Может ненадо?', :method => :delete %></td>
 </tr>
 <% end %>
 </table>
