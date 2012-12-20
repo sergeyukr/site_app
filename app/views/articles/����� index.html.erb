@@ -1,0 +1,20 @@
+﻿
+<div style="float:left"><h1>Новости</h1></div>
+<div style="float:right; margin-right:200px; position:static"><%= link_to 'Новая статья', new_article_path %></div>
+<div style="clear:both"/>
+<table align="center" border="2" cellspacing="3" width="80%">
+<caption align="top">Список новостей</caption>
+<tr>
+	<td width="60%" align="center">Заголовок</td>
+	<td width="15%" align="center">Дата</td>
+	<td width="25%" align="center">Действия</td>
+</tr>
+<% @articles.each do |article| %>
+<tr>
+	<td width="60%" align="center"><%= article.name %></td>
+	<td width="15%" align="center"><%= article.dat %></td>
+	<td width="25%" align="center"><%= link_to 'Редактировать', edit_article_path(article) %>/<%= link_to 'Удалить', article, confirm: 'Может ненадо?', :method => :delete %></td>
+</tr>
+<% end %>
+</table>
+
