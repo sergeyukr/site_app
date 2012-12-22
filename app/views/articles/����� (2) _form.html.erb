@@ -1,0 +1,31 @@
+﻿<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" align="center">
+    <lable>Название</lable><br />
+    
+  </div>
+  <div class="label"><%= f.text_field :name %></div>
+  <div class="field">
+    <lable>Содержимое</lable><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :Категория %><br />
+    <%= select(:article, :categoriy, [["", ""],["Общее", "Общее"],["Политика", "Политика"], ["Спорт", "Спорт"], ["Культура", "Культура"]]) %>
+  </div>
+  <div class="button">
+    <%= f.submit 'Сохранить'%>
+    <%= button_to_function "Отмена", "history.back()" %>
+  </div>
+<% end %>

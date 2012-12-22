@@ -1,4 +1,4 @@
-﻿<%= form_for(@article) do |f| %>
+<%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -10,24 +10,24 @@
       </ul>
     </div>
   <% end %>
+  
+<div class="body">
+<div class="header"><h1 class="title">Создать / Редактировать новость</h1></div>
+<div class="clear"></div>
+<div class="content"><form class="form">
 
-  <div class="field">
-    <lable>Название</lable><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <lable>Содержимое</lable><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :Категория %><br />
-    <%= select(@article, :categoriy, ['Политика', 'Спорт', 'Культура']) %>
-  </div>
-  <div class="field">
-    <%= f.label :Дата %><br />
-    <%= f.date_select :dat %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+<label class="label">Заголовок</label><div class="textField"><%= f.text_field :name %></div><br><br>
+<label class="label">Текст</label> <div class="textField" id="textArea"><%= f.text_area :content %></div>  <br><br>
+<label class="label">Категория</label>
+<div class="textField">
+	<%= select(:article, :categoriy, [["", ""],["Общее", "Общее"],["Политика", "Политика"], ["Спорт", "Спорт"], ["Культура", "Культура"]]) %>
+</div><br><br>
+<div class="panelButtons">
+<div class="button"><%= button_to_function "Отмена", "history.back()" %></div>
+<div class="button"><%= f.submit 'Сохранить'%></div>
+</div>
+</form></div>
+
+</div>
 <% end %>
