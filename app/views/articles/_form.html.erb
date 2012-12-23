@@ -1,7 +1,7 @@
-<%= form_for(@article) do |f| %>
+﻿<%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      
 
       <ul>
       <% @article.errors.full_messages.each do |msg| %>
@@ -10,24 +10,19 @@
       </ul>
     </div>
   <% end %>
-  
-<div class="body">
-<div class="header"><h1 class="title">Создать / Редактировать новость</h1></div>
-<div class="clear"></div>
-<div class="content"><form class="form">
 
-
-<label class="label">Заголовок</label><div class="textField"><%= f.text_field :name %></div><br><br>
-<label class="label">Текст</label> <div class="textField" id="textArea"><%= f.text_area :content %></div>  <br><br>
-<label class="label">Категория</label>
-<div class="textField">
-	<%= select(:article, :categoriy, [["", ""],["Общее", "Общее"],["Политика", "Политика"], ["Спорт", "Спорт"], ["Культура", "Культура"]]) %>
-</div><br><br>
-<div class="panelButtons">
-<div class="button"><%= button_to_function "Отмена", "history.back()" %></div>
-<div class="button"><%= f.submit 'Сохранить'%></div>
+<div style="margin-left:10%">
+  <label style="float:left; margin-right:25px; margin-bottom:25px">Заголовок</label>
+  <div ><%= f.text_field :name %></div>
+  <div style="clear:both"/>
+  <label style="float:left; margin-right:45px; margin-bottom:25px">Статья</label>
+  <div style="float:left; margin-bottom:25px"><%= f.text_area :content %></div>
+  <div style="clear:both"/>
+  <label style="float:left; margin-right:20px; margin-bottom:25px">Категория</label>
+  <div><%= select(:article, :categoriy, [["", ""],["Общее", "Общее"],["Политика", "Политика"], ["Спорт", "Спорт"], ["Культура", "Культура"]]) %></div>
 </div>
-</form></div>
-
+<div style="margin:30px; margin-left:14%">
+  <%= f.submit 'Сохранить'%>
+  <%= button_to_function "Отмена", "history.back()" %>
 </div>
 <% end %>
